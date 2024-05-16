@@ -35,10 +35,10 @@ if [ ! -d ./aws-iot-device-sdk-python ]; then
 fi
 
 # Check to see if AWS Device SDK for Python is already installed, install if not
-if ! python -c "import AWSIoTPythonSDK" &> /dev/null; then
+if ! python3 -c "import AWSIoTPythonSDK" &> /dev/null; then
   printf "\nInstalling AWS SDK...\n"
   pushd aws-iot-device-sdk-python
-  pip install AWSIoTPythonSDK
+  python3 -m pip install .
   result=$?
   popd
   if [ $result -ne 0 ]; then
