@@ -278,7 +278,7 @@ while True:
                         "UUID" : "",
                         "timestamp": "",
                         "Inference": "",  #provision for inference action from AWS 
-                        "Temperature": 10, 
+                        "Temperature": 80, 
                         "Humidity": 60,
                         "Pressure": 255,
                         "Vibration" : 13, 
