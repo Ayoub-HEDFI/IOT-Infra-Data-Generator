@@ -227,5 +227,4 @@ def CreateIoTRuleJSON(path, station_number, role_arn): #Inputs path and how many
 for n in range(1, 11):
     CreateIoTRuleJSON(path, n, roleArn)
     
-print ("Script finished grace fully !!!")
-      
+print ("Script finished gracefully !!!")      
