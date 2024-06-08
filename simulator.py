@@ -43,8 +43,6 @@ import subprocess as sp
 
 AllowedActions = ['both', 'publish', 'subscribe']
 
-# Global counter to track the sequence for Flow
-counter = 0
 
 # Custom MQTT message callback
 def customCallback(client, userdata, message):
@@ -285,12 +283,13 @@ while True:
                         "Humidity": 60,
                         "Pressure": 255,
                         "Vibration" : 13, 
-                        "Flow": 20,
+                        "Flow": 10,
                         "rpm": 340,
                         "PowerConsumption": 4000,
                         "Amperage": 15,
                         "Voltage": 220,
                         "Fan": False,
+                        "flow_counter": 0,
                                 
                                 
                                       
@@ -332,8 +331,6 @@ while True:
     
     
     
-    
-
     #Read JSON object function.
     #evaluate JSON data in and generates new data 
     def ReadJSON(n):
@@ -538,6 +535,8 @@ while True:
                     
                 #FLOW
                 #baseline value for flow, cubic meters per second 
+                counter = json_object_in["flow_counter"]
+
                 if counter == 0:
                     flow = 10
                 elif 1 <= counter <= 3:
@@ -551,8 +550,6 @@ while True:
                 # Reset the counter if it exceeds the length of the sequence
                 if counter > 9:
                     counter = 0
-
-                # THE PREVIOUS LOGIC OF SIMULATING THE FLOW
                 # flow = json_object_in["Flow"]
                 # if json_object_in["Flow"] in range (15,25):
                 #     flow = json_object_in["Flow"] + random.randint(-2,2)
@@ -626,6 +623,7 @@ while True:
                             "Amperage": amperage,
                             "Voltage": voltage,
                             "Fan": manual_override,
+                            "flow_counter": counter,
                             
                                 
                                           
