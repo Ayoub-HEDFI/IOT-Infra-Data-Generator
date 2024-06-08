@@ -536,7 +536,7 @@ while True:
                 #FLOW
                 #baseline value for flow, cubic meters per second 
                 counter = json_object_in["flow_counter"]
-                print ("################",flow,counter)
+                print ("################",counter)
 
                 if counter == 0:
                     flow = 10
