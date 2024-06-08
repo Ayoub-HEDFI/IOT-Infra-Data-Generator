@@ -43,6 +43,9 @@ import subprocess as sp
 
 AllowedActions = ['both', 'publish', 'subscribe']
 
+# Global counter to track the sequence for Flow
+counter = 0
+
 # Custom MQTT message callback
 def customCallback(client, userdata, message):
     print("Received a new message: ")
@@ -330,9 +333,6 @@ while True:
     
     
     
-    # Global counter to track the sequence for Flow
-    if 'counter' not in globals():
-        counter = 0
 
     #Read JSON object function.
     #evaluate JSON data in and generates new data 
