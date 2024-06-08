@@ -329,6 +329,11 @@ while True:
     
     
     
+    
+    # Global counter to track the sequence for Flow
+    if 'counter' not in globals():
+        counter = 0
+
     #Read JSON object function.
     #evaluate JSON data in and generates new data 
     def ReadJSON(n):
@@ -533,13 +538,28 @@ while True:
                     
                 #FLOW
                 #baseline value for flow, cubic meters per second 
-                flow = json_object_in["Flow"]
-                if json_object_in["Flow"] in range (15,25):
-                    flow = json_object_in["Flow"] + random.randint(-2,2)
-                elif json_object_in["Flow"] <=15:
-                    flow = json_object_in["Flow"] + 1
-                elif json_object_in["Flow"] >=25:
-                    flow = json_object_in["Flow"] - 1
+                if counter == 0:
+                    flow = 10
+                elif 1 <= counter <= 3:
+                    flow = 12
+                elif 4 <= counter <= 9:
+                    flow = 18
+
+                # Increment the counter for the next iteration
+                counter += 1
+
+                # Reset the counter if it exceeds the length of the sequence
+                if counter > 9:
+                    counter = 0
+
+                # THE PREVIOUS LOGIC OF SIMULATING THE FLOW
+                # flow = json_object_in["Flow"]
+                # if json_object_in["Flow"] in range (15,25):
+                #     flow = json_object_in["Flow"] + random.randint(-2,2)
+                # elif json_object_in["Flow"] <=15:
+                #     flow = json_object_in["Flow"] + 1
+                # elif json_object_in["Flow"] >=25:
+                #     flow = json_object_in["Flow"] - 1
                 
                 #RPM
                 #baseline value for level starting from 50%
